@@ -16,6 +16,7 @@ gem 'therubyracer', :platforms => :ruby
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+  gem "capybara"
 end
 
 # Declare any dependencies that are still in development here instead of in

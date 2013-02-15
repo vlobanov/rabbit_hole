@@ -2,7 +2,7 @@
   body {
     background-color:#EEE;
   }
-  .login {
+  #login {
     width:500px;
     background-color:#FFF;
     border:2px solid #444;
@@ -12,7 +12,14 @@
     margin-right:auto;
     margin-top:200px;
   }
-.login
+
+  .error {
+    color: red;
+    margin-bottom:40px;
+  }
+#login
+  - if @error
+    .error=@error
   =form_tag(begin_session_path) do
     - if RabbitHole.use_password_field
       = password_field_tag 'password'

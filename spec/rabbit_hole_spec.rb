@@ -20,15 +20,11 @@ describe RabbitHole do
     let(:controller_class) { ApplicationController }
 
     before do
-      controller_class.send(:include, RabbitHole)
+      controller_class.send(:include, RabbitHole::Protection)
     end
 
     it "responds to check_auth!" do
       controller_class.new.should respond_to :check_auth!
-    end
-
-    it "inserts before_filter after including" do
-      RabbitHole.included_into.should_not be_nil
     end
   end
 

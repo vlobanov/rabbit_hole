@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  include RabbitHole
+  include RabbitHole::Protection
 
   def index
   end

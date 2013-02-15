@@ -25,15 +25,19 @@ module RabbitHole
     yield self
   end
 
-  def check_auth!
-    redirect_to redirect_to_if_denied
+
+  def self.password_correct?
+    true
   end
 
-  mattr_accessor :included_into
-  @@included_into = nil
+  module Protection
+    def check_auth!
+      redirect_to redirect_to_if_denied
+    end
 
-  def RabbitHole.included(cl)
-    @@included_into = cl
-    cl.send(:before_filter, :check_auth!)
+    def self.included(cl)
+      @@included_into = cl
+      cl.send(:before_filter, :check_auth!)
+    end
   end
 end

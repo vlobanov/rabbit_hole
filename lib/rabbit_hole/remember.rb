@@ -11,7 +11,7 @@ module RabbitHole::Remember
     @storage_type
   end
 
-  def remember!
+  def sign_in!
     if storage_type == :session
       session[:user] = 'admin'
     elsif storage_type == :cookies
@@ -19,7 +19,7 @@ module RabbitHole::Remember
     end
   end
 
-  def remembered?
+  def signed_in?
     if storage_type == :session
       session[:user] == 'admin'
     elsif storage_type == :cookies
@@ -27,7 +27,7 @@ module RabbitHole::Remember
     end
   end
 
-  def forget!
+  def sign_out!
     if storage_type == :session
       session[:user] = nil
     elsif @storage_type == :cookies

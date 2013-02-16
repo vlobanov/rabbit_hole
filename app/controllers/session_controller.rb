@@ -1,13 +1,13 @@
 class SessionController < ApplicationController
-  include RabbitHole::Protection
-  
-  skip_before_filter :check_auth!
+  include RabbitHole::Remember
+
+  skip_before_filter :check_auth!, :only => [:login, :begin_session]
 
   def login
-    #if signed_in? and !Rails.env.test?
-    #  redirect_to RabbitHole.redirect_to_after_login
-    #  return
-    #end
+    if signed_in? and !Rails.env.test?
+      redirect_to RabbitHole.redirect_to_after_login
+      return
+    end
   end
 
   def begin_session
@@ -15,10 +15,13 @@ class SessionController < ApplicationController
       sign_in!
       redirect_to RabbitHole.redirect_to_after_login
     else
-      @error = RabbitHole::auth_failed_message
+      @error = RabbitHole.auth_failed_message
       render 'login'
     end
   end
 
-
+  def logout
+    sign_out!
+    redirect_to RabbitHole::redirect_to_after_logout
+  end
 end

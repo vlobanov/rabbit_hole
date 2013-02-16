@@ -1,19 +1,9 @@
 require 'spec_helper'
 
 describe RabbitHole do
-  describe "recognizes password" do
-    it "denies wrong" do
-      RabbitHole::password_correct?("wrong_wrong_password").should == false
-    end
-
-    it "accepts right" do
-      RabbitHole::password_correct?(RabbitHole::get_password).should == true
-    end
-  end
-
   describe ".setup" do
     RabbitHole::OPTION_NAMES.each do |name|
-      it "should set the #{name}" do
+      it "sets the #{name}" do
         RabbitHole.setup do |config|
           config.send("#{name}=", name)
           RabbitHole.send(name).should == name
@@ -26,58 +16,34 @@ describe RabbitHole do
     end
   end
 
-  describe "including into a controller" do
-    let(:controller_class) { ApplicationController }
-
-    before do
-      controller_class.send(:include, RabbitHole::Protection)
+  describe "requires password" do
+    it "raises exception if pass wasn't set" do
+      RabbitHole.set_defaults
+      expect { RabbitHole::password_correct?("-") }.to raise_exception
     end
 
-    it "responds to check_auth!" do
-      controller_class.new.should respond_to :check_auth!
+    it "donesn't raise exception if pass was set" do
+      RabbitHole.setup do |config|
+        config.password= 'aaahaha'
+      end
+      expect { RabbitHole::password_correct?("-") }.not_to raise_exception
     end
   end
 
-  describe "protecting admin/index" do
+  describe "recognizes password" do
     before do
+      RabbitHole.set_defaults
       RabbitHole.setup do |config|
-        config.redirect_to_if_denied = "/denied.html"
+        config.password= 'aaahaha'
       end
     end
 
-    it "redirects to ... if denied" do
-      visit '/admin/index'
-      current_path.should == RabbitHole.redirect_to_if_denied
-    end
-  end
-
-  describe "logging in" do
-    before do
-      RabbitHole.setup do |config|
-        config.redirect_to_after_login = '/admin/index'
-      end
+    it "denies wrong" do
+      RabbitHole::password_correct?("wrong_wrong_password").should == false
     end
 
-    it "gives error if password is wrong" do
-      visit '/admin/login'
-      current_path.should == '/admin/login'
-      within("#login") do
-        fill_in 'password', :with => 'wrong_wrong_password'
-      end
-      click_button 'login'
-      current_path.should == '/admin/login'
-      page.should have_content RabbitHole::auth_failed_message
-    end
-
-    it "redirects and sets session if password is correct" do
-      visit '/admin/login'
-      current_path.should == '/admin/login'
-      within("#login") do
-        fill_in 'password', :with => RabbitHole::get_password
-      end
-      click_button 'login'
-      current_path.should == RabbitHole.redirect_to_after_login
-      SessionController.new.signed_in?.should == true
+    it "accepts right" do
+      RabbitHole::password_correct?(RabbitHole::get_password).should == true
     end
   end
 end

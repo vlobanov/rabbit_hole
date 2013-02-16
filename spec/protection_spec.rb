@@ -1,32 +1,25 @@
 require 'spec_helper'
 
 describe RabbitHole::Protection do
-  describe "including into a controller" do
-    let(:controller_class) { ApplicationController }
-
-    before do
-      controller_class.send(:include, RabbitHole::Protection)
-    end
-
-    it "responds to check_auth!" do
-      controller_class.new.should respond_to :check_auth!
+  before do
+    RabbitHole.setup do |config|
+      config.password= 'aaahaha'
     end
   end
 
-  describe "protecting admin/index" do
-    before do
-      RabbitHole.setup do |config|
-        config.redirect_to_if_denied = "/denied.html"
-      end
-    end
-
-    it "redirects to ... if denied" do
+  describe "protecting redirection" do
+    it "goes to 'RabbitHole.redirect_to_if_denied' if denied" do
       visit '/admin/index'
       current_path.should == RabbitHole.redirect_to_if_denied
     end
+
+    it "lets visit login page" do
+      visit '/admin/login'
+      current_path.should == '/admin/login'
+    end
   end
 
-  describe "logging in" do
+  describe "logging in and out" do
     before do
       RabbitHole.setup do |config|
         config.redirect_to_after_login = '/admin/index'
@@ -52,6 +45,19 @@ describe RabbitHole::Protection do
       end
       click_button 'login'
       current_path.should == RabbitHole.redirect_to_after_login
+    end
+
+    it "redirects and removes session after logging out" do
+      # a small cheat
+      RabbitHole.setup do |config|
+        config.redirect_to_after_logout = '/after_logout.html'
+      end
+
+      visit '/session_storage_tester/remember'
+      visit '/admin/logout'
+      current_path.should == RabbitHole::redirect_to_after_logout
+      visit '/admin/index'
+      current_path.should == RabbitHole::redirect_to_if_denied
     end
   end
 end

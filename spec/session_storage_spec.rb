@@ -10,7 +10,7 @@ describe 'Session Storage' do
       end
     end
 
-    it "remembers" do
+    it "signs in" do
       visit '/session_storage_tester/remember'
       visit '/session_storage_tester/index'
       find(:id, 'session_val').text.should == 'admin'
@@ -18,7 +18,7 @@ describe 'Session Storage' do
       find(:id, 'remembered').text.should == 'true'
     end
 
-    it "forgets" do
+    it "signs out" do
       visit '/session_storage_tester/forget'
       visit '/session_storage_tester/index'
       find(:id, 'session_val').text.should == ''
@@ -34,7 +34,7 @@ describe 'Session Storage' do
       end
     end
 
-    it "remembers" do
+    it "signs in" do
       visit '/session_storage_tester/remember'
       visit '/session_storage_tester/index'
       find(:id, 'session_val').text.should == ''
@@ -42,7 +42,7 @@ describe 'Session Storage' do
       find(:id, 'remembered').text.should == 'true'
     end
 
-    it "forgets" do
+    it "signs out" do
       visit '/session_storage_tester/forget'
       visit '/session_storage_tester/index'
       find(:id, 'session_val').text.should == ''

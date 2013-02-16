@@ -6,18 +6,19 @@ module RabbitHole
   OPTION_NAMES = [
     :redirect_to_if_denied,
     :redirect_to_after_login,
+    :redirect_to_after_logout,
     :use_password_field,
     :password,
-    :password_provider,
     :routes_scope,
     :auth_failed_message,
     :remember_for]
 
   def self.set_defaults
     @@redirect_to_if_denied = "/denied.html"
-    @@redirect_to_after_login = '/'
+    @@redirect_to_after_login = '/?hello'
+    @@redirect_to_after_logout = '/?bye'
     @@use_password_field = true
-    @@password = 'aaaaaa'
+    @@password = nil
     @@password_provider = nil
     @@routes_scope = 'admin'
     @@auth_failed_message = "sorry, the password you entered is wrong"
@@ -41,6 +42,7 @@ module RabbitHole
   end
 
   def self.password_correct?(given_password)
+    fail "Password must be set" if self.get_password.nil?
     self.get_password == given_password
   end
 end

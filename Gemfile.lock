@@ -78,6 +78,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.0.3)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (3.2.12)
       actionmailer (= 3.2.12)
       actionpack (= 3.2.12)
@@ -141,6 +144,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   rabbit_hole!
+  rack_session_access
   rspec-rails (~> 2.0)
   sqlite3
   therubyracer

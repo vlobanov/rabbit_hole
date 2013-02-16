@@ -1,0 +1,2 @@
+module SessionStorageTesterHelper
+end

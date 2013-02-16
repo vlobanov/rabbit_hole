@@ -1,4 +1,8 @@
 class SessionController < ApplicationController
+  include RabbitHole::Protection
+  
+  skip_before_filter :check_auth!
+
   def login
     #if signed_in? and !Rails.env.test?
     #  redirect_to RabbitHole.redirect_to_after_login

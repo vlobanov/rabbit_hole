@@ -14,6 +14,8 @@ gem 'jquery-rails'
 
 gem 'therubyracer', :platforms => :ruby
 
+gem 'rack_session_access'
+
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
   gem "capybara"

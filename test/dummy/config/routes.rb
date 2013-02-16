@@ -1,4 +1,8 @@
 Dummy::Application.routes.draw do
+  get "session_storage_tester/index"
+  get "session_storage_tester/remember"
+  get "session_storage_tester/forget"
+
   get "admin/index"
 
   # The priority is based upon order of creation:

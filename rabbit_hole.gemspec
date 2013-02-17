@@ -7,17 +7,14 @@ require "rabbit_hole/version"
 Gem::Specification.new do |s|
   s.name        = "rabbit_hole"
   s.version     = RabbitHole::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of RabbitHole."
+  s.authors     = ["Vadim Lobanov"]
+  s.email       = ["lvadim1993@gmail.com"]
+  s.homepage    = "https://github.com/vlobanov/rabbit_hole"
+  s.summary     = "A small Rails 3 engine gem that allows to protect some controllers with password."
   s.description = "TODO: Description of RabbitHole."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.8"
-  # s.add_dependency "jquery-rails"
-
-  s.add_development_dependency "sqlite3"
+  s.add_dependency "rails", "~> 3.2.6"
 end

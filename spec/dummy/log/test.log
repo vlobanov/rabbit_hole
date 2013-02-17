@@ -4496,3 +4496,123 @@ Processing by SessionStorageTesterController#index as HTML
   Rendered session_storage_tester/index.html.haml within layouts/application (0.3ms)
 Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  rollback transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+Started GET "/admin/index" for 127.0.0.1 at 2013-02-17 12:36:30 +0700
+Processing by AdminController#index as HTML
+Redirected to http://www.example.com/denied.html
+Filter chain halted as :check_auth! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Started GET "/admin/login" for 127.0.0.1 at 2013-02-17 12:36:30 +0700
+Processing by SessionController#login as HTML
+  Rendered /home/vadim/sites/RabbitHole/app/views/session/login.html.haml within layouts/application (66.4ms)
+Completed 200 OK in 182ms (Views: 181.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/admin/login" for 127.0.0.1 at 2013-02-17 12:36:30 +0700
+Processing by SessionController#login as HTML
+  Rendered /home/vadim/sites/RabbitHole/app/views/session/login.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+Started POST "/admin/login" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionController#begin_session as HTML
+  Parameters: {"utf8"=>"✓", "password"=>"[FILTERED]", "commit"=>"login"}
+  Rendered /home/vadim/sites/RabbitHole/app/views/session/login.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/admin/login" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionController#login as HTML
+  Rendered /home/vadim/sites/RabbitHole/app/views/session/login.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+Started POST "/admin/login" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionController#begin_session as HTML
+  Parameters: {"utf8"=>"✓", "password"=>"[FILTERED]", "commit"=>"login"}
+Redirected to http://www.example.com/admin/index
+Completed 302 Found in 9ms (ActiveRecord: 0.0ms)
+Started GET "/admin/index" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by AdminController#index as HTML
+  Rendered admin/index.html.haml within layouts/application (2.7ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/session_storage_tester/remember" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#remember as HTML
+  Rendered inline template (0.5ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started GET "/admin/logout" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionController#logout as HTML
+Redirected to http://www.example.com/after_logout.html
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+Started GET "/admin/index" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by AdminController#index as HTML
+Redirected to http://www.example.com/denied.html
+Filter chain halted as :check_auth! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/session_storage_tester/remember" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#remember as HTML
+  Rendered inline template (0.6ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/session_storage_tester/index" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#index as HTML
+  Rendered session_storage_tester/index.html.haml within layouts/application (4.0ms)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/session_storage_tester/forget" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#forget as HTML
+  Rendered inline template (0.5ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/session_storage_tester/index" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#index as HTML
+  Rendered session_storage_tester/index.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/session_storage_tester/remember" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#remember as HTML
+  Rendered inline template (0.5ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/session_storage_tester/index" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#index as HTML
+  Rendered session_storage_tester/index.html.haml within layouts/application (0.5ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/session_storage_tester/forget" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#forget as HTML
+  Rendered inline template (0.8ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started GET "/session_storage_tester/index" for 127.0.0.1 at 2013-02-17 12:36:31 +0700
+Processing by SessionStorageTesterController#index as HTML
+  Rendered session_storage_tester/index.html.haml within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
